@@ -20,6 +20,7 @@ class PracticeView extends WatchUi.View {
     private var _done as Boolean = false;
     private var _running as Boolean = false;
     private var _timer as Timer.Timer?;
+    private var _compass as CompassGuide?;
 
     function initialize(form as Number, paced as Boolean) {
         View.initialize();
@@ -27,20 +28,57 @@ class PracticeView extends WatchUi.View {
         _paced = paced;
         _moves = FormIndex.loadMoves(form);
         _look = PracticeLog.getLook();
+        if (PracticeLog.getCompass()) {
+            _compass = new CompassGuide();
+        }
     }
 
     function onShow() as Void {
         if (_running) {
             startTimer();
         }
+        var c = _compass;
+        if (c != null) {
+            c.start();
+        }
     }
 
     function onHide() as Void {
         stopTimer();
+        var c = _compass;
+        if (c != null) {
+            c.stop();
+        }
+    }
+
+    // Compass guide is on but front hasn't been set yet.
+    private function needsFront() as Boolean {
+        var c = _compass;
+        return c != null && !c.isSet() && !_done;
+    }
+
+    // Points the compass guide at the current move's facing.
+    private function syncCompass() as Void {
+        var c = _compass;
+        if (c != null && !_done) {
+            c.setTarget(Directions.degrees((_moves[_idx] as Array)[3] as String));
+        }
     }
 
     // START button.
     function primary() as Void {
+        if (needsFront()) {
+            // First press with the compass guide on: save the current heading as front.
+            var c = _compass as CompassGuide;
+            if (c.setFront()) {
+                syncCompass();
+                Feedback.onTarget();
+            } else {
+                _compass = null; // no magnetometer data: carry on without the guide
+            }
+            WatchUi.requestUpdate();
+            return;
+        }
         if (_done) {
             restart();
         } else if (!_paced) {
@@ -69,9 +107,20 @@ class PracticeView extends WatchUi.View {
             restart();
             return;
         }
+        // Compass guide: score the facing of the move that is ending.
+        var miss = false;
+        var c = _compass;
+        if (c != null && c.isSet()) {
+            var ok = c.checkMove();
+            miss = ok != null && !ok;
+        }
         if (_idx < _moves.size() - 1) {
             _idx++;
+            syncCompass();
             cue();
+            if (miss) {
+                Feedback.offTarget();
+            }
         } else {
             finishRep();
         }
@@ -81,6 +130,7 @@ class PracticeView extends WatchUi.View {
     function previous() as Void {
         if (!_done && _idx > 0) {
             _idx--;
+            syncCompass();
             if (_running) {
                 startTimer();
             }
@@ -95,6 +145,13 @@ class PracticeView extends WatchUi.View {
     private function restart() as Void {
         _done = false;
         _idx = 0;
+        // Each rep starts from ready stance facing front: re-set front automatically.
+        var c = _compass;
+        if (c != null) {
+            c.resetScore();
+            c.setFront();
+            syncCompass();
+        }
         cue();
         if (_paced) {
             _running = true;
@@ -284,7 +341,7 @@ class PracticeView extends WatchUi.View {
         var r = fh * 0.32;
         tw = dc.getTextWidthInPixels(label, font);
         x = cx - (r * 2 + 8 + tw) / 2;
-        drawArrow(dc, x + r, y + fh / 2, r, dir);
+        drawDirectionArrow(dc, x + r, y + fh / 2, r, dir);
         dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(x + r * 2 + 8, y, font, label, Graphics.TEXT_JUSTIFY_LEFT);
         return y + fh;
@@ -298,8 +355,16 @@ class PracticeView extends WatchUi.View {
         var cx = w / 2;
         var tiny = dc.getFontHeight(Graphics.FONT_TINY);
 
+        var counter = (_idx + 1) + "/" + _moves.size();
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, h * 0.05, Graphics.FONT_TINY, (_idx + 1) + "/" + _moves.size(), Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, h * 0.05, Graphics.FONT_TINY, counter, Graphics.TEXT_JUSTIFY_CENTER);
+        var c = _compass;
+        if (c != null && c.isSet()) {
+            // Compass needle beside the move counter.
+            var r = tiny * 0.32;
+            var nx = cx - dc.getTextWidthInPixels(counter, Graphics.FONT_TINY) / 2 - r - 8;
+            drawDirectionArrow(dc, nx, h * 0.05 + tiny / 2, r, m[3] as String);
+        }
 
         var top = h * 0.05 + tiny;
         var bottom = h * 0.90;
@@ -307,7 +372,12 @@ class PracticeView extends WatchUi.View {
         var side = hand == null ? null : Figure.firstPart(hand);
         Figure.draw(dc, cx, top + area * 0.53, area, m[0] as String, m[1] as String, side);
 
-        if (isKihap(_idx)) {
+        if (needsFront()) {
+            dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
+            var prompt = "Face front: START";
+            dc.drawText(cx, h * 0.86, fitFont(dc, prompt, h * 0.86, Graphics.FONT_TINY, Graphics.FONT_XTINY),
+                prompt, Graphics.TEXT_JUSTIFY_CENTER);
+        } else if (isKihap(_idx)) {
             dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
             dc.drawText(cx, h * 0.86, Graphics.FONT_TINY, "KIHAP!", Graphics.TEXT_JUSTIFY_CENTER);
         }
@@ -323,9 +393,19 @@ class PracticeView extends WatchUi.View {
         var h = dc.getHeight();
         var status;
         var statusColor = Graphics.COLOR_WHITE;
-        if (isKihap(_idx)) {
+        var c = _compass;
+        var guide = (c != null && c.isSet()) ? c.guidance() : null;
+        if (needsFront()) {
+            status = "Face front: START";
+            statusColor = Graphics.COLOR_YELLOW;
+        } else if (isKihap(_idx)) {
             status = "KIHAP!";
             statusColor = Graphics.COLOR_RED;
+        } else if (_paced && !_running) {
+            status = _idx == 0 ? "START: go" : "Paused";
+        } else if (guide != null && c != null) {
+            status = guide;
+            statusColor = c.isAligned() ? Graphics.COLOR_GREEN : Graphics.COLOR_ORANGE;
         } else if (!_paced) {
             status = "Rep " + (_reps + 1);
         } else if (_running) {
@@ -340,7 +420,8 @@ class PracticeView extends WatchUi.View {
             statusY = y;
         }
         dc.setColor(statusColor, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, statusY, Graphics.FONT_TINY, status, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, statusY, fitFont(dc, status, statusY, Graphics.FONT_TINY, Graphics.FONT_XTINY),
+            status, Graphics.TEXT_JUSTIFY_CENTER);
 
         if (getApp().workout.isRecording()) {
             dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
@@ -370,16 +451,37 @@ class PracticeView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_TRANSPARENT);
         dc.drawText(cx, h * 0.3, Graphics.FONT_MEDIUM, "Form complete", Graphics.TEXT_JUSTIFY_CENTER);
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, h * 0.45, Graphics.FONT_SMALL, "This set: " + _reps, Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(cx, h * 0.55, Graphics.FONT_SMALL,
+        dc.drawText(cx, h * 0.42, Graphics.FONT_SMALL, "This set: " + _reps, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, h * 0.51, Graphics.FONT_SMALL,
             "All time: " + PracticeLog.getReps(FormIndex.IDS[_form]), Graphics.TEXT_JUSTIFY_CENTER);
+        var c = _compass;
+        if (c != null && c.checked > 0) {
+            // Compass guide score for this rep.
+            dc.setColor(c.onTarget == c.checked ? Graphics.COLOR_GREEN : Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(cx, h * 0.61, Graphics.FONT_TINY,
+                "Facing: " + c.onTarget + "/" + c.checked + " on target", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        }
         dc.drawText(cx, h * 0.72, Graphics.FONT_TINY, "START: again", Graphics.TEXT_JUSTIFY_CENTER);
         dc.drawText(cx, h * 0.81, Graphics.FONT_TINY, "BACK: exit", Graphics.TEXT_JUSTIFY_CENTER);
     }
 
-    // Arrow showing the facing direction relative to the start (front = up).
-    private function drawArrow(dc as Dc, cx as Numeric, cy as Numeric, r as Numeric, dir as String) as Void {
-        var a = Math.toRadians(Directions.degrees(dir));
+    // Direction arrow. Normally the move's facing relative to the start (front = up, blue).
+    // With the compass guide set it becomes a needle: up = where the watch points,
+    // rotated toward the target; green when within tolerance, orange otherwise.
+    private function drawDirectionArrow(dc as Dc, cx as Numeric, cy as Numeric, r as Numeric, dir as String) as Void {
+        var c = _compass;
+        var e = (c != null && c.isSet()) ? c.error() : null;
+        if (c != null && e != null) {
+            drawArrow(dc, cx, cy, r, e, c.isAligned() ? Graphics.COLOR_GREEN : Graphics.COLOR_ORANGE);
+        } else {
+            drawArrow(dc, cx, cy, r, Directions.degrees(dir), Graphics.COLOR_BLUE);
+        }
+    }
+
+    private function drawArrow(dc as Dc, cx as Numeric, cy as Numeric, r as Numeric, degrees as Numeric,
+                               color as Number) as Void {
+        var a = Math.toRadians(degrees);
         var cos = Math.cos(a);
         var sin = Math.sin(a);
         var shape = [[0, -r], [r * 0.6, r * 0.6], [0, r * 0.25], [-r * 0.6, r * 0.6]];
@@ -389,7 +491,7 @@ class PracticeView extends WatchUi.View {
             var y = shape[i][1];
             pts.add([cx + x * cos - y * sin, cy + x * sin + y * cos]);
         }
-        dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
+        dc.setColor(color, Graphics.COLOR_TRANSPARENT);
         dc.fillPolygon(pts);
     }
 }

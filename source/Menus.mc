@@ -23,6 +23,8 @@ module Menus {
         var menu = new WatchUi.Menu2({ :title => "Options" });
         menu.addItem(new WatchUi.MenuItem("Paced tempo",
             PracticeLog.formatTempo(PracticeLog.getTempo()) + " per move", :tempo, null));
+        menu.addItem(new WatchUi.ToggleMenuItem("Compass guide",
+            { :enabled => "On: check facing", :disabled => "Off" }, :compass, PracticeLog.getCompass(), null));
         menu.addItem(new WatchUi.MenuItem("History", "Reps per form", :history, null));
         WatchUi.pushView(menu, new OptionsMenuDelegate(), WatchUi.SLIDE_UP);
     }
@@ -100,6 +102,8 @@ class OptionsMenuDelegate extends WatchUi.Menu2InputDelegate {
         var id = item.getId();
         if (id == :tempo) {
             Menus.openTempo(item);
+        } else if (id == :compass) {
+            PracticeLog.setCompass((item as WatchUi.ToggleMenuItem).isEnabled());
         } else if (id == :history) {
             Menus.openHistory();
         }

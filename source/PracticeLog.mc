@@ -37,6 +37,16 @@ module PracticeLog {
         Storage.setValue("tempo_ms", ms);
     }
 
+    // Compass guide: check facing direction with the magnetometer (off by default).
+    function getCompass() as Boolean {
+        var v = Storage.getValue("compass");
+        return v != null && (v as Boolean);
+    }
+
+    function setCompass(on as Boolean) as Void {
+        Storage.setValue("compass", on);
+    }
+
     // Practice screen look: 0 = text, 1 = figure.
     function getLook() as Number {
         var v = Storage.getValue("look");
@@ -75,5 +85,14 @@ module Feedback {
 
     function done() as Void {
         vibe([[100, 500]]);
+    }
+
+    // Compass guide: light buzz on reaching the target facing, triple buzz on a wrong facing.
+    function onTarget() as Void {
+        vibe([[40, 80]]);
+    }
+
+    function offTarget() as Void {
+        vibe([[100, 90], [0, 70], [100, 90], [0, 70], [100, 90]]);
     }
 }

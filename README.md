@@ -15,6 +15,13 @@ Runs on fēnix 7 / 7S / 7X, fēnix 7 Pro / 7S Pro / 7X Pro, fēnix E, fēnix 8 a
 
   A KIHAP cue appears at the bottom when due. Hand-side sources and confidence are in [docs/HAND_SIDES.md](docs/HAND_SIDES.md).
 - **Character screen**: press LIGHT (or hold UP) on a movement to switch to a full-screen character in a dobok performing the move, seen from behind so your left is on the left. The working arm or kicking leg is outlined in green. Press again to switch back. The app remembers your choice.
+- **Compass guide** (Options → Compass guide, off by default): uses the watch's compass to check you face the right way.
+  - **Set front:** on the first move, stand facing the examiner and press START. The current heading becomes "front".
+  - **Live needle:** the direction arrow points where to turn. It turns green with a light buzz within ±30°; otherwise the status line says "Turn L 40" or "Turn R 90".
+  - **Check:** when a move ends (you advance, or the paced beat moves on), a wrong facing gets a triple buzz.
+  - **Score:** "Form complete" shows how many moves were on target. START for another rep sets front again automatically.
+
+  The watch measures your wrist, not your body, so the check is deliberately loose. It's most accurate in step mode, where you set front and advance in the same arm position (pressing a button).
 - **Paced**: the watch moves to the next movement and vibrates at a set tempo (1–5 s). Kihap movements get a double buzz. START pauses.
 - **Workout recording**: press START on the main screen to record a Training activity with heart rate and calories. Every completed form is saved as a lap tagged with the form's number, and the session stores the total forms completed. It syncs to Garmin Connect like any other activity.
 - **History**: reps per form and the date you last practiced each one, kept on the watch.

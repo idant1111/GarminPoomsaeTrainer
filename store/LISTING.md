@@ -8,7 +8,7 @@ Paste these into the Connect IQ developer portal (apps.garmin.com/developer → 
 | Package | `bin/Poomsae.iq` |
 | Title | Taekwondo Poomsae Trainer |
 | Category | Training (or Fitness) |
-| Version | 1.2.0 (store had 1.1.0) |
+| Version | 1.3.0 (store has 1.2.0) |
 | Supported devices | fēnix 7 / 7S / 7X; fēnix 7 Pro / 7S Pro / 7X Pro (Solar and Sapphire); fēnix E; fēnix 8 (43/47/51mm, Pro, Solar 47/51mm, incl. tactix 8 / quatix 8 variants); fēnix 9 (43/47/51mm, Pro 43/47/51mm, Pro Solar 47/51mm). |
 | Permissions shown to users | Fit (record activities), FitContributor (custom fields), Sensor (heart rate) |
 
@@ -34,6 +34,9 @@ EVERY MOVEMENT SHOWS
 CHARACTER VIEW
 Press LIGHT (or hold UP) to see a character in a dobok performing the move, viewed from behind so your left is on the left. The working hand or kicking leg is highlighted.
 
+COMPASS GUIDE (optional)
+Turn on Compass guide in Options. Face front and press START, and a compass needle shows where to turn for each move. You get a buzz when you're facing the right way, a warning buzz when a move ends facing the wrong way, and a facing score at the end of the form. Your wrist is measured, not your body, so treat it as a guide.
+
 PRACTICE MODES
 • Step through: advance with the buttons
 • Paced: the watch moves on and vibrates at your tempo (1–5 s per move)
@@ -48,6 +51,10 @@ SUPPORTED WATCHES
 fēnix 7 / 7S / 7X, fēnix 7 Pro / 7S Pro / 7X Pro, fēnix E, fēnix 8 (AMOLED, Pro and Solar), fēnix 9 (all sizes, Pro and Pro Solar), tactix 7, tactix 8 and Enduro 2.
 
 Note: movement data was compiled from published Kukkiwon-style references. Details vary between schools, so check sequences against your instructor's curriculum.
+
+## What's new (1.3.0)
+
+New optional Compass guide (Options → Compass guide): face front and press START. A compass needle then shows which way to turn for every move, with a buzz when you're on target, a warning buzz for a wrong facing, and a facing score when you finish the form.
 
 ## What's new (1.2.0)
 
