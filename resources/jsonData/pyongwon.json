@@ -1,0 +1,23 @@
+{"moves":[
+["Naranhi-seogi", "Sonnal arae hecheo-makki", "Low knife-hand opening (slow)", "N", 0, "Yang"],
+["Naranhi-seogi", "Tong-milgi", "Log pushing (slow)", "N", 0, "Yang"],
+["R dwit-kubi", "Sonnal arae-makki", "Low knife-hand block", "E", 0, "Oreun"],
+["L dwit-kubi", "Sonnal yeop-makki", "Knife-hand middle block", "W", 0, "Oen"],
+["L ap-kubi", "Palkup ollyeo-chigi", "Elbow uppercut", "W", 0, "Oreun"],
+["R dwit-kubi", "Ap-chagi+dwidora yeop-chagi", "Kick, spin side kick, guard", "E", 0, "Oreun"],
+["R dwit-kubi", "Sonnal arae-makki", "Low knife-hand block", "E", 0, "Oreun"],
+["Juchum-seogi", "Kodureo olgul yeop-makki", "Assisted high side block", "E", 0, "Oreun"],
+["Juchum-seogi", "Dangkyeo deungjumeok chigi", "Stomp + pulling backfists", "E", 1, "Oreun"],
+["Ap-kkoa-seogi", "Meongye-chigi", "Double elbow side strike", "E", 0, "Yang"],
+["Juchum-seogi", "Hecheo santeul-makki", "Opening mountain block", "E", 0, "Yang"],
+["L hakdari-seogi", "Keumgang-makki + dolcheogi", "Diamond blk + small hinge", "E", 0, "Oreun + Oreun"],
+["R ap-kubi", "Yeop-chagi + palkup ollyeo", "Side kick + elbow uppercut", "E", 0, "Oreun + Oen"],
+["L dwit-kubi", "Ap-chagi+dwidora yeop-chagi", "Kick, spin side kick, guard", "W", 0, "Oen"],
+["L dwit-kubi", "Sonnal arae-makki", "Low knife-hand block", "W", 0, "Oen"],
+["Juchum-seogi", "Kodureo olgul yeop-makki", "Assisted high side block", "W", 0, "Oen"],
+["Juchum-seogi", "Dangkyeo deungjumeok chigi", "Stomp + pulling backfists", "W", 1, "Oen"],
+["Ap-kkoa-seogi", "Meongye-chigi", "Double elbow side strike", "W", 0, "Yang"],
+["Juchum-seogi", "Hecheo santeul-makki", "Opening mountain block", "W", 0, "Yang"],
+["R hakdari-seogi", "Keumgang-makki + dolcheogi", "Diamond blk + small hinge", "W", 0, "Oen + Oen"],
+["L ap-kubi", "Yeop-chagi + palkup pyojeok", "Side kick + elbow target", "W", 0, "Oen + Oreun"]
+]}

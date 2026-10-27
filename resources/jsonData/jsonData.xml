@@ -1,0 +1,19 @@
+<resources>
+    <jsonData id="t1" filename="t1.json"/>
+    <jsonData id="t2" filename="t2.json"/>
+    <jsonData id="t3" filename="t3.json"/>
+    <jsonData id="t4" filename="t4.json"/>
+    <jsonData id="t5" filename="t5.json"/>
+    <jsonData id="t6" filename="t6.json"/>
+    <jsonData id="t7" filename="t7.json"/>
+    <jsonData id="t8" filename="t8.json"/>
+    <jsonData id="koryo" filename="koryo.json"/>
+    <jsonData id="keumgang" filename="keumgang.json"/>
+    <jsonData id="taebaek" filename="taebaek.json"/>
+    <jsonData id="pyongwon" filename="pyongwon.json"/>
+    <jsonData id="sipjin" filename="sipjin.json"/>
+    <jsonData id="jitae" filename="jitae.json"/>
+    <jsonData id="cheonkwon" filename="cheonkwon.json"/>
+    <jsonData id="hansu" filename="hansu.json"/>
+    <jsonData id="ilyeo" filename="ilyeo.json"/>
+</resources>

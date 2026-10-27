@@ -1,0 +1,22 @@
+{"moves":[
+["L ap-kubi", "Arae-makki", "Low block", "W", 0, "Oen"],
+["Oen-seogi", "Mejumeok naeryeo-chigi", "Hammerfist downward strike", "W", 0, "Oen"],
+["R ap-kubi", "Arae-makki", "Low block", "E", 0, "Oreun"],
+["Oreun-seogi", "Mejumeok naeryeo-chigi", "Hammerfist downward strike", "E", 0, "Oreun"],
+["L ap-kubi", "An-makki + an-makki", "Inside block, both arms", "N", 0, "Oen + Oreun"],
+["R ap-kubi", "Ap-chagi+deungjumeok+makki", "Kick, backfist, inside blk", "N", 0, "Oreun"],
+["L ap-kubi", "Ap-chagi+deungjumeok+makki", "Kick, backfist, inside blk", "N", 0, "Oen"],
+["R ap-kubi", "Deungjumeok ap-chigi", "Backfist front strike", "N", 0, "Oreun"],
+["L dwit-kubi", "Hansonnal bakkat-makki", "Knife-hand outside block", "E", 0, "Oen"],
+["R ap-kubi", "Palkup dollyeo-chigi", "Turning elbow strike", "E", 0, "Oreun"],
+["R dwit-kubi", "Hansonnal bakkat-makki", "Knife-hand outside block", "W", 0, "Oreun"],
+["L ap-kubi", "Palkup dollyeo-chigi", "Turning elbow strike", "W", 0, "Oen"],
+["L ap-kubi", "Arae-makki + an-makki", "Low block + inside block", "S", 0, "Oen + Oreun"],
+["R ap-kubi", "Ap-chagi + arae + an-makki", "Kick, low blk, inside blk", "S", 0, "Oreun + Oreun + Oen"],
+["L ap-kubi", "Olgul-makki", "High block", "E", 0, "Oen"],
+["R ap-kubi", "Yeop-chagi + palkup pyojeok", "Side kick + elbow target", "E", 0, "Oreun + Oen"],
+["R ap-kubi", "Olgul-makki", "High block", "W", 0, "Oreun"],
+["L ap-kubi", "Yeop-chagi + palkup pyojeok", "Side kick + elbow target", "W", 0, "Oen + Oreun"],
+["L ap-kubi", "Arae-makki + an-makki", "Low block + inside block", "S", 0, "Oen + Oreun"],
+["R dwit-kkoa", "Ap-chagi + deungjumeok", "Kick, jump in, backfist", "S", 1, "Oreun + Oreun"]
+]}

@@ -1,0 +1,19 @@
+# Build output
+bin/
+gen/
+mir/
+internal-mir/
+*.prg
+*.iq
+*.prg.debug.xml
+
+# Signing keys: never commit
+*.der
+*.pem
+*.key
+
+# Editor / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

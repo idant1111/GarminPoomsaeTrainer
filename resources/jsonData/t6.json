@@ -1,0 +1,21 @@
+{"moves":[
+["L ap-kubi", "Arae-makki", "Low block", "W", 0, "Oen"],
+["L dwit-kubi", "Ap-chagi + bakkat-makki", "Front kick + outside block", "W", 0, "Oreun + Oen"],
+["R ap-kubi", "Arae-makki", "Low block", "E", 0, "Oreun"],
+["R dwit-kubi", "Ap-chagi + bakkat-makki", "Front kick + outside block", "E", 0, "Oen + Oreun"],
+["L ap-kubi", "Hansonnal biteureo-makki", "Knife-hand high twist block", "N", 0, "Oreun"],
+["L ap-kubi", "Dollyeo-chagi+makki+jireugi", "Roundhouse, high blk, punch", "W", 0, "Oreun"],
+["R ap-kubi", "Ap-chagi + baro-jireugi", "Front kick + reverse punch", "W", 0, "Oreun + Oen"],
+["R ap-kubi", "Olgul bakkat-makki+jireugi", "High outer block + punch", "E", 0, "Oreun"],
+["L ap-kubi", "Ap-chagi + baro-jireugi", "Front kick + reverse punch", "E", 0, "Oen + Oreun"],
+["Naranhi-seogi", "Arae hecheo-makki", "Low opening block (slow)", "N", 0, "Yang"],
+["R ap-kubi", "Hansonnal biteureo-makki", "Knife-hand high twist block", "N", 0, "Oen"],
+["R ap-kubi", "Dollyeo-chagi + arae-makki", "Roundhouse + low block", "W", 1, "Oen + Oreun"],
+["R dwit-kubi", "Ap-chagi + bakkat-makki", "Front kick + outside block", "W", 0, "Oen + Oreun"],
+["L ap-kubi", "Arae-makki", "Low block", "E", 0, "Oen"],
+["L dwit-kubi", "Ap-chagi + bakkat-makki", "Front kick + outside block", "E", 0, "Oreun + Oen"],
+["L dwit-kubi", "Sonnal momtong makki", "Knife-hand guard (step back)", "N", 0, "Oen"],
+["R dwit-kubi", "Sonnal momtong makki", "Knife-hand guard (step back)", "N", 0, "Oreun"],
+["L ap-kubi", "Batangson an-makki+jireugi", "Palm block + reverse punch", "N", 0, "Oen"],
+["R ap-kubi", "Batangson an-makki+jireugi", "Palm block + reverse punch", "N", 0, "Oreun"]
+]}

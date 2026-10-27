@@ -1,0 +1,20 @@
+{"moves":[
+["L ap-seogi", "Arae-makki", "Low block", "W", 0, "Oen"],
+["R ap-seogi", "Momtong bandae-jireugi", "Middle punch", "W", 0, "Oreun"],
+["R ap-seogi", "Arae-makki", "Low block", "E", 0, "Oreun"],
+["L ap-seogi", "Momtong bandae-jireugi", "Middle punch", "E", 0, "Oen"],
+["L ap-kubi", "Arae-makki", "Low block", "N", 0, "Oen"],
+["L ap-kubi", "Momtong baro-jireugi", "Middle reverse punch", "N", 0, "Oreun"],
+["R ap-seogi", "Momtong an-makki", "Middle inside block", "E", 0, "Oen"],
+["L ap-seogi", "Momtong baro-jireugi", "Middle reverse punch", "E", 0, "Oreun"],
+["L ap-seogi", "Momtong an-makki", "Middle inside block", "W", 0, "Oreun"],
+["R ap-seogi", "Momtong baro-jireugi", "Middle reverse punch", "W", 0, "Oen"],
+["R ap-kubi", "Arae-makki", "Low block", "N", 0, "Oreun"],
+["R ap-kubi", "Momtong baro-jireugi", "Middle reverse punch", "N", 0, "Oen"],
+["L ap-seogi", "Olgul-makki", "High block", "W", 0, "Oen"],
+["R ap-seogi", "Ap-chagi + bandae-jireugi", "Front kick + middle punch", "W", 0, "Oreun + Oreun"],
+["R ap-seogi", "Olgul-makki", "High block", "E", 0, "Oreun"],
+["L ap-seogi", "Ap-chagi + bandae-jireugi", "Front kick + middle punch", "E", 0, "Oen + Oen"],
+["L ap-kubi", "Arae-makki", "Low block", "S", 0, "Oen"],
+["R ap-kubi", "Momtong bandae-jireugi", "Middle punch", "S", 1, "Oreun"]
+]}

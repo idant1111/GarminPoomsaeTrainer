@@ -1,0 +1,22 @@
+{"moves":[
+["L dwit-kubi", "Sonnal momtong makki", "Knife-hand guarding block", "W", 0, "Oen"],
+["R ap-kubi", "Pyeonsonkkeut sewo-tzireugi", "Vertical spear-hand thrust", "W", 0, "Oreun"],
+["R dwit-kubi", "Sonnal momtong makki", "Knife-hand guarding block", "E", 0, "Oreun"],
+["L ap-kubi", "Pyeonsonkkeut sewo-tzireugi", "Vertical spear-hand thrust", "E", 0, "Oen"],
+["L ap-kubi", "Jebipoom mok-chigi", "Swallow-form neck strike", "N", 0, "Oreun"],
+["R ap-kubi", "Ap-chagi + baro-jireugi", "Front kick + reverse punch", "N", 0, "Oreun + Oen"],
+["Kick (L leg)", "Yeop-chagi", "Left side kick", "N", 0, "Oen"],
+["R dwit-kubi", "Yeop-chagi + sonnal makki", "Side kick + knife guard", "N", 0, "Oreun + Oreun"],
+["L dwit-kubi", "Momtong bakkat-makki", "Middle outside block", "E", 0, "Oen"],
+["L dwit-kubi", "Ap-chagi + an-makki", "Front kick + inside block", "E", 0, "Oreun + Oreun"],
+["R dwit-kubi", "Momtong bakkat-makki", "Middle outside block", "W", 0, "Oreun"],
+["R dwit-kubi", "Ap-chagi + an-makki", "Front kick + inside block", "W", 0, "Oen + Oen"],
+["L ap-kubi", "Jebipoom mok-chigi", "Swallow-form neck strike", "S", 0, "Oreun"],
+["R ap-kubi", "Ap-chagi + deungjumeok", "Front kick + backfist", "S", 0, "Oreun + Oreun"],
+["L ap-seogi", "Momtong an-makki", "Middle inside block", "E", 0, "Oen"],
+["L ap-seogi", "Momtong baro-jireugi", "Middle reverse punch", "E", 0, "Oreun"],
+["R ap-seogi", "Momtong an-makki", "Middle inside block", "W", 0, "Oreun"],
+["R ap-seogi", "Momtong baro-jireugi", "Middle reverse punch", "W", 0, "Oen"],
+["L ap-kubi", "An-makki + dubeon-jireugi", "Inside block + double punch", "S", 0, "Oen + Yang"],
+["R ap-kubi", "An-makki + dubeon-jireugi", "Inside block + double punch", "S", 1, "Oreun + Yang"]
+]}
